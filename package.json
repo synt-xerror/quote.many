@@ -1,6 +1,6 @@
 {
   "type": "module",
   "dependencies": {
-    "canvas": "^3.2.3"
+    "@napi-rs/canvas": "^1.0.0"
   }
 }
