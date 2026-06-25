@@ -27,6 +27,7 @@ const FONT_DEFS = [
   // Sundanese e blocos exóticos que nem Liberation nem DejaVu cobrem.
   // AVISO: Unifont é bitmap (pixelada). Só deve ser alcançada em casos raros.
   { path: join(__dirname, "unifont.otf"),                     family: "QuoteUni"   },
+  { path: join(__dirname, "STIXTwoMath-Regular.ttf"),         family: "QuoteMath"  },
 ];
 
 for (const { path, family } of FONT_DEFS) {
@@ -39,10 +40,10 @@ for (const { path, family } of FONT_DEFS) {
 }
 
 // Stack da quote: serif → emoji colorido → sans (cobertura ampla) → unicode universal
-const FONT_SERIF = `"QuoteSerif", "QuoteEmoji", "QuoteSans", "QuoteUni"`;
+const FONT_SERIF = `"QuoteSerif", "QuoteEmoji", "QuoteSans", "QuoteMath", "QuoteUni"`;
 // Stack do autor: prioriza DejaVu Sans (cobertura ampla, vetorial, nunca pixela)
 // antes de cair em Serif/Unifont — evita pixelização em nomes com acentos/símbolos
-const FONT_AUTHOR = `"QuoteSans", "QuoteEmoji", "QuoteSerif", "QuoteUni"`;
+const FONT_AUTHOR = `"QuoteSans", "QuoteEmoji", "QuoteSerif", "QuoteMath", "QuoteUni"`;
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
