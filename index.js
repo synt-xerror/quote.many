@@ -286,10 +286,10 @@ export default async function (ctx) {
   const { t }  = ctx.i18n.createT(import.meta.url);
   const { msg } = ctx;
 
-  if (!msg.is(pfx + "quote")) return;
+  if (!msg.is("quote")) return;
 
   if (!msg.hasReply) {
-    await msg.reply(t("needToReply"));
+    await msg.reply.text(t("needToReply"));
     return;
   }
 
@@ -328,7 +328,7 @@ export default async function (ctx) {
           output:     outputPath,
         });
 
-        await ctx.sendImage(outputPath);
+        await ctx.reply.image(outputPath);
       } finally {
         if (picUrl) unlink(picPath).catch(console.error);
         unlink(outputPath).catch(console.error);
@@ -336,7 +336,7 @@ export default async function (ctx) {
     },
     async (err) => {
       ctx.log.error(`[quote] ${err.message}`);
-      await msg.reply(t("error"));
+      await msg.reply.text(t("error"));
     }
   );
 }
