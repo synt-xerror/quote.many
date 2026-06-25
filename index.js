@@ -328,7 +328,7 @@ export default async function (ctx) {
           output:     outputPath,
         });
 
-        await ctx.reply.image(outputPath);
+        await msg.reply.image(outputPath);
       } finally {
         if (picUrl) unlink(picPath).catch(console.error);
         unlink(outputPath).catch(console.error);
