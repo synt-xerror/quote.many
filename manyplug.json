@@ -1,10 +1,9 @@
 {
   "name": "quote",
   "key": "synt-xerror/quote",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Quote for ManyBot, what else do you expected?",
   "category": "fun",
-  "service": false,
   "author": {
     "name": "synt-xerror",
     "email": "me@stxerr.dev",
@@ -13,8 +12,5 @@
   "license": "MIT",
   "repo": "https://github.com/synt-xerror/quote.many",
   "main": "index.js",
-  "dependencies": {
-    "@napi-rs/canvas": ">=1.0.0"
-  },
-  "externalDependencies": {}
+  "dependencies": {}
 }

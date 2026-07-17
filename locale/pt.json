@@ -1,3 +1,4 @@
 {
-  "needToReply": "Você precisa responder a uma mensagem de texto"
+  "needToReply": "Você precisa responder a uma mensagem de texto",
+  "error": "An error occurred while trying to quote..." 
 }

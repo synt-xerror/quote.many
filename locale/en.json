@@ -1,3 +1,4 @@
 {
-  "needToReply": "You need to reply a text message"
+  "needToReply": "You need to reply a text message",
+  "error": "Hubo un error al citar..."
 }
