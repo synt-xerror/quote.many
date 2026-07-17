@@ -270,19 +270,19 @@ export default async function (ctx) {
     return;
   }
 
-  const reply     = await msg.getReply();
-  const replyBody = reply.body;
+  const reply       = await msg.getReply();
+  const replyBody   = reply.body;
+  const replySender = reply.sender; // resolved JID — always available, even for @lid contacts
 
-  // reply.getContact() throws for @lid users (new WA privacy feature) — expected, not an error
-  let replyContact = null;
-  try {
-    replyContact = await reply.getContact();
-  } catch {
-    ctx.log.info("[quote] Contact unavailable (@lid user) — rendering with placeholder.");
-  }
+  // ctx.contacts.get() merges raw + store-resolved contact records and can
+  // still return null for a contact never seen before (e.g. unresolved @lid).
+  // That's fine for the *name* — but the profile picture doesn't need contact
+  // confirmation at all, so contactId uses replySender directly and isn't
+  // gated behind this lookup succeeding.
+  const replyContact = await ctx.contacts.get(replySender).catch(() => null);
 
-  const replyAuthor = replyContact?.pushname ?? replyContact?.name ?? replyContact?.shortName ?? "??";
-  const contactId   = replyContact?.id ?? null;
+  const replyAuthor = replyContact?.pushname ?? replyContact?.name ?? replySender.split("@")[0] ?? "??";
+  const contactId   = replySender || null;
 
   ctx.download.enqueue(
     async () => {
